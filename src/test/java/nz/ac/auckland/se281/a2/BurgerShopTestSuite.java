@@ -429,7 +429,11 @@ public class BurgerShopTestSuite {
 
 	@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 	public static class YourTest extends TaskTest {
-
+		@Test
+		public void T4_09_estimate_time_3_minutes_45_seconds_snack_drink() {
+			runCommands(ADD + " 9", "L", ADD + " 13", "XL", ORDER);
+			assertContains(MessagesCLI.ESTIMATE_WAITING_TIME.getMessage() + "0 hours 3 minutes 45 seconds");
+		}
 	}
 
 }
