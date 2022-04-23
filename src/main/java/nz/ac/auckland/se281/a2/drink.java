@@ -3,7 +3,11 @@ package nz.ac.auckland.se281.a2;
 public class drink extends orders {
 
 	
-	public double findTime(int done) {
+	public drink(int done) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public double findTime() {
 		double timing = 0;
 		if (done == 0) {
             timing += 0.75;

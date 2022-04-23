@@ -29,14 +29,9 @@ public class BurgerShop {
         cart.add(name);
         cartPrices.add(price);
         burgerOrdered += 1;
-        if (burger == 0) {
-            time += 5;
-            burger = 1;
-            return;
-        }
-        if (burger != 0) {
-            time += 1;
-        }
+        burger myburger = new burger(burgerr);
+        time+=myburger.findTime();
+        burgerr = 1;
     }
 
     /**
@@ -49,6 +44,9 @@ public class BurgerShop {
      * @param price
      * @param size
      */
+    int burgerr = 0;
+    int snack = 0;
+    int drink = 0;
     int snackOrdered = 0;
     public void addSnack(String name, float price, SIZE size) {
         // TODO TASK1
@@ -69,14 +67,9 @@ public class BurgerShop {
         cart.add(name);
         cartPrices.add(price + extra);
         snackOrdered += 1;
-        if (snack == 0) {
-            time += 3;
-            snack = 1;
-            return;
-        }
-        if (snack != 0) {
-            time += 0.5;
-        }
+        snack mysnack = new snack(snack);
+        time+=mysnack.findTime();
+        snack = 1;
 
     }
 
@@ -113,7 +106,9 @@ public class BurgerShop {
         cart.add(name);
         cartPrices.add(price + extra);
         drinkOrdered += 1;
-        time+=drink.findTime(drink)
+        drink mydrink = new drink(drink);
+        time+=mydrink.findTime();
+        drink = 1;
     }
 
     /**
@@ -178,7 +173,7 @@ public class BurgerShop {
             cartPrices.add(priceBurger + priceSnack + (priceDrink) * (float) 0.5);
             cart.add("COMBO : (" + nameBurger + ", " + nameSnack + " (M), " + nameDrink + " (M))");
         }
-        burger = 1;
+        burgerr = 1;
         drink = 1;
         snack = 1;
         if (comboOrdered == 0) {
@@ -217,7 +212,7 @@ public class BurgerShop {
         // TODO TASK3
         cartPrices.clear();
         cart.clear();
-        burger = 0;
+        burgerr = 0;
         snack = 0;
         drink = 0;
     }
@@ -227,9 +222,7 @@ public class BurgerShop {
      * give a warning if there are missing opportunities for COMBO menus
      * 
      */
-    int burger = 0;
-    int snack = 0;
-    int drink = 0;
+    
     public double findTime(String item, float price) {
         double time = 0;
 
@@ -257,13 +250,13 @@ public class BurgerShop {
             drink = 1;
 
         }
-        if (item.contains("Burger") && burger == 1) {
+        if (item.contains("Burger") && burgerr == 1) {
             time = 1;
             System.out.println("hh");
         }
-        if (item.contains("Burger") && burger == 0) {
+        if (item.contains("Burger") && burgerr == 0) {
             time = 5;
-            burger = 1;
+            burgerr = 1;
         }
 
 
@@ -309,7 +302,7 @@ public class BurgerShop {
         //time+=findTime(cart.get(i),cartPrices.get(i));
         //}
         System.out.println(time);
-        burger = 0;
+        burgerr = 0;
         snack = 0;
         drink = 0;
         showCart();
