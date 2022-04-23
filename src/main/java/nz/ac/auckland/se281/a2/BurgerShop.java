@@ -1,10 +1,15 @@
 package nz.ac.auckland.se281.a2;
 
+import java.util.ArrayList;
+
 import nz.ac.auckland.se281.a2.cli.Menu.SIZE;
 import nz.ac.auckland.se281.a2.cli.MessagesCLI;
 
-public class BurgerShop {
 
+
+public class BurgerShop {
+	ArrayList<String> cart = new ArrayList<String>();
+	ArrayList<Float> cartPrices = new ArrayList<Float>();
 	public BurgerShop() {
 
 	}
@@ -15,8 +20,16 @@ public class BurgerShop {
 	 * @param name
 	 * @param price
 	 */
+	int burgerOrdered=0;
+	double time = 0;
+	int comboOrdered=0;
 	public void addBurger(String name, float price) {
 		// TODO TASK1
+		
+		cart.add(name);
+		cartPrices.add(price);
+		burgerOrdered+=1;
+		
 	}
 
 	/**
@@ -29,8 +42,28 @@ public class BurgerShop {
 	 * @param price
 	 * @param size
 	 */
+	int snackOrdered=0;
 	public void addSnack(String name, float price, SIZE size) {
 		// TODO TASK1
+		float extra =0;
+		if (size==size.L) {
+		extra=3;
+		name = (name+" (L)");
+		}
+		if (size==size.XL) {
+			extra=4;
+			name = (name+" (XL)");
+			}
+		if (size==size.M) {
+		
+			name = (name+" (M)");
+			}
+		
+		cart.add(name);
+		cartPrices.add(price+extra);
+		snackOrdered+=1;
+		
+		
 	}
 
 	/**
@@ -46,8 +79,27 @@ public class BurgerShop {
 	 * @param price
 	 * @param size
 	 */
+	int drinkOrdered=0;
 	public void addDrink(String name, float price, SIZE size) {
 		// TODO TASK1
+		float extra =0;
+		if (size==size.L) {
+			name = (name+" (L)");
+			extra=3;
+			}
+			if (size==size.XL) {
+				name = (name+" (XL)");
+				extra=4;
+				}
+			if (size==size.M) {
+			
+				name = (name+" (M)");
+				}
+			
+			cart.add(name);
+			cartPrices.add(price+extra);
+			drinkOrdered+=1;
+			
 	}
 
 	/**
@@ -58,8 +110,28 @@ public class BurgerShop {
 	 */
 	public void showCart() {
 		// TODO TASK1
+		float total = 0;
+		float discount = 100;
+		for (int i = 0; i < cart.size(); i++) {
+			//System.out.println(cart.size());
+			  System.out.println(i+" - "+cart.get(i)+": $"+String.format("%.02f", (cartPrices.get(i))));
+			  total+=cartPrices.get(i);
+			}
+		if(cart.size()==0) {
+			MessagesCLI.CART_EMPTY.printMessage();
+			return;
+		}
+		if (total>=discount) {
+			total=total*(float)0.75;
+			MessagesCLI.DISCOUNT.printMessage();
+		}
+		//if (cart.size()<1) {
+			//System.out.println("Cart is empty");
+			//return;
+		//}
+		System.out.println("Total: $"+String.format("%.02f", total));
 	}
-
+	
 	/**
 	 * add a combo in the cart.
 	 * 
