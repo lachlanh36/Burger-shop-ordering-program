@@ -24,8 +24,8 @@ import nz.ac.auckland.se281.a2.cli.MessagesCLI;
 @SuiteClasses({ BurgerShopTestSuite.Task1Test.class, //
 BurgerShopTestSuite.Task2Test.class, //
 BurgerShopTestSuite.Task3Test.class, //
-// BurgerShopTestSuite.Task4Test.class, //
-// BurgerShopTestSuite.YourTest.class   //
+BurgerShopTestSuite.Task4Test.class, //
+BurgerShopTestSuite.YourTest.class   //
 })
 
 public class BurgerShopTestSuite {
