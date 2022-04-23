@@ -184,14 +184,26 @@ public class BurgerShop {
 	 */
 	public void removeItem(int posCart) {
 		// TODO TASK3
-	}
+		if (posCart<cart.size()&&posCart>=0) {
+		cartPrices.remove(posCart);
+		cart.remove(posCart);
+		}
+		else {
+			MessagesCLI.NOT_VALID_CART_POSITION.printMessage();
+		}
+		}
+	
 
 	/**
 	 * removes all elements in the cart
 	 */
 	public void clearCart() {
 		// TODO TASK3
+		cartPrices.clear();
+		cart.clear();
+		
 	}
+
 
 	/**
 	 * This method confirms the order, showing the estimated pick up time. It also
