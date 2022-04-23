@@ -150,6 +150,28 @@ public class BurgerShop {
 	public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink,
 			float priceDrink, SIZE size) {
 		// TODO TASK2
+		if (size==size.L) {
+			cartPrices.add(priceBurger+priceSnack+3+(priceDrink+3)*(float)0.5);
+			cart.add("COMBO : ("+nameBurger+", "+nameSnack+" (L), "+nameDrink+" (L))");
+			
+		}
+		if (size==size.XL) {
+			cartPrices.add(priceBurger+priceSnack+4+(priceDrink+4)*(float)0.5);
+			cart.add("COMBO : ("+nameBurger+", "+nameSnack+" (XL), "+nameDrink+" (XL))");
+		}
+		if (size==size.M) {
+			cartPrices.add(priceBurger+priceSnack+(priceDrink)*(float)0.5);
+			cart.add("COMBO : ("+nameBurger+", "+nameSnack+" (M), "+nameDrink+" (M))");
+		}
+		
+		if (comboOrdered==0) {
+		time+=8.75;
+		comboOrdered=1;
+		return;
+		}
+		if (comboOrdered!=0) {
+			time+=1.75;
+		}
 	}
 
 	/**
